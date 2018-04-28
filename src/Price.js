@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PriceDifference from './PriceDifference'
 
 class Price extends Component {
   constructor(props){
@@ -47,6 +48,7 @@ class Price extends Component {
       <div>
         <h1 className="display-4 text-center">Current Bitcoin Price:</h1>
         <h1 className="display-4 text-center">${this.state.price} {this.state.currency}</h1>
+        <PriceDifference />
         <p className="lead text-center">Updated at: {this.state.timeUpdated}</p>
 
       </div>
