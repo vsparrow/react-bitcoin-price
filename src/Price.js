@@ -16,6 +16,7 @@ class Price extends Component {
     let priceChange = Number(this.state.price.replace(/,/g, '')) - Number(prevState.price.replace(/,/g, ''))
     console.log(prevState);
     console.log("Price change: "+ priceChange);
+    console.log("Price change level 4: "+ priceChange.toFixed(4));
   }//componentDidUpdate
   componentWillUnmount(){
     clearInterval(this.interval);
