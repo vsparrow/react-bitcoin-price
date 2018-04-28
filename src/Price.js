@@ -6,11 +6,12 @@ class Price extends Component {
     this.state = {price: "", currency: "", timeUpdated: ""}
   }//constructor
   componentDidMount(){
-    let url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
-    fetch(url)
-    .then(res=>res.json())
-    .then(json=>this.convertJson(json))
+    this.fetchJson()                                    //initial call
+    this.interval = setInterval(this.fetchJson, 60000); //call every 60 seconds
   }//componentDidMount
+  componentWillUnmount(){
+    clearInterval(this.interval);
+  }//componentWillUnmount
   convertJson = (json)=>{
     console.log(json);
     console.log(json.bpi.USD.rate);
@@ -25,6 +26,12 @@ class Price extends Component {
     //add EUR
 
   }//convertJson
+  fetchJson = ()=>{
+    let url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
+    fetch(url)
+    .then(res=>res.json())
+    .then(json=>this.convertJson(json))
+  }
   render(){
     return(
       <div>
