@@ -3,12 +3,20 @@ import React, { Component } from 'react';
 class Price extends Component {
   constructor(props){
     super(props)
-    this.state = {price: "", currency: "", timeUpdated: ""}
+    this.state = {price: "", currency: "", timeUpdated: "", priceChange: ""}
   }//constructor
   componentDidMount(){
     this.fetchJson()                                    //initial call
     this.interval = setInterval(this.fetchJson, 60000); //call every 60 seconds
   }//componentDidMount
+  componentDidUpdate(prevProps, prevState) {
+    // if (prevProps.height !== this.props.height) {
+    //   someChartLibrary.updateHeight(this.props.height);
+    // }
+    let priceChange = Number(this.state.price.replace(/,/g, '')) - Number(prevState.price.replace(/,/g, ''))
+    console.log(prevState);
+    console.log("Price change: "+ priceChange);
+  }//componentDidUpdate
   componentWillUnmount(){
     clearInterval(this.interval);
   }//componentWillUnmount
@@ -17,7 +25,8 @@ class Price extends Component {
     console.log(json.bpi.USD.rate);
     console.log(json.bpi.USD.code);
     console.log(json.time.updated);
-    this.setState({price: json.bpi.USD.rate,
+    this.setState({
+      price: json.bpi.USD.rate,
       currency: json.bpi.USD.code,
       timeUpdated: json.time.updated
     }) //setState
