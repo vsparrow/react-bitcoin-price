@@ -3,7 +3,7 @@ import Price from './Price'
 // import PriceDifference from './PriceDifference'
 
 // import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 
 class App extends Component {
   render() {
