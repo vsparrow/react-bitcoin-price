@@ -4,7 +4,7 @@ class PriceDifference extends Component {
   constructor(props){
     super(props)
   //   // this.state = {price: "", currency: "", timeUpdated: "", priceChange: ""}
-  this.state = {priceChange: ""}
+  this.state = {priceChange: "", initialize: true}
   }//constructor
 
   componentWillReceiveProps(nextProps) {
@@ -20,13 +20,15 @@ class PriceDifference extends Component {
       // console.log(prevState);
       console.log("Price change: "+ oldpriceChange);
       console.log("Price change level 4: "+ oldpriceChange.toFixed(4));
+      if(this.state.priceChange !== ""){this.setState({initialize: false})} //see if this is first display, then there is no price difference. no diff.
       this.setState({priceChange: oldpriceChange.toFixed(4)})
+
   }
   render(){
 
 
     return(
-      <h3 className="text-center">Change: {this.state.priceChange}</h3>
+      <h3 className="text-center">{this.state.initialize  ? null :  <span>Change: {this.state.priceChange}</span> }</h3>
     )
   }
 }//class
