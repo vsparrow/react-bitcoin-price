@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
+import ShowArrow from './ShowArrow'
 
 class PriceDifference extends Component {
   constructor(props){
     super(props)
     this.state = {priceChange: "", initialize: true, color: "black"}
   }//constructor
+
+  showArrow = ()=>{
+    // let arrow = null;
+    let arrow = "null";
+    if(this.state.color === "green"){arrow =      '<span><i className="fas fa-arrow-alt-circle-up"></i></span>'}
+    else if(this.state.color === "red")  {arrow = '<span><i className="fas fa-arrow-alt-circle-down"></i></span>'}
+    // else {arrow = null} //if arrow black
+    else {arrow = "null"} //if arrow black
+    console.log("arrow:" + arrow);
+    return arrow
+  }
 
   componentWillReceiveProps(nextProps) {
       let oldpriceChange = Number(nextProps.price.replace(/,/g, '')) - Number(this.props.price.replace(/,/g, ''))
@@ -18,12 +30,12 @@ class PriceDifference extends Component {
       if(this.state.priceChange !== ""){this.setState({initialize: false})}
       this.setState({priceChange: oldpriceChange.toFixed(4), color: color})
   }
-
+        // {this.state.color === "green" ? <i className="fas fa-arrow-alt-circle-up"></i>  : <i className="fas fa-arrow-alt-circle-down"></i>}
   render(){
     return(
       <h3 className="text-center">
-        {this.state.initialize  ? null :  <span className={this.state.color}>change: {this.state.priceChange}</span> }
-        {this.state.color === "green" ? <i class="fas fa-arrow-alt-circle-up"></i>  : <i class="fas fa-arrow-alt-circle-down"></i>}
+        {this.state.initialize  ? null :  <span className={this.state.color}>change: {this.state.priceChange} <ShowArrow color={this.state.color}/></span> }
+
       </h3>
     )
   }
