@@ -18,11 +18,12 @@ class PriceDifference extends Component {
       if(this.state.priceChange !== ""){this.setState({initialize: false})}
       this.setState({priceChange: oldpriceChange.toFixed(4), color: color})
   }
-  
+
   render(){
     return(
       <h3 className="text-center">
         {this.state.initialize  ? null :  <span className={this.state.color}>change: {this.state.priceChange}</span> }
+        {this.state.color === "green" ? <i class="fas fa-arrow-alt-circle-up"></i>  : <i class="fas fa-arrow-alt-circle-down"></i>}
       </h3>
     )
   }
