@@ -8,7 +8,7 @@ class Price extends Component {
   }//constructor
   componentDidMount(){
     this.fetchJson()                                    //initial call
-    this.interval = setInterval(this.fetchJson, 60000); //call every 60 seconds
+    this.interval = setInterval(this.fetchJson, 30000); //call every 30 seconds
   }//componentDidMount
   componentDidUpdate(prevProps, prevState) {
     // if (prevProps.height !== this.props.height) {
