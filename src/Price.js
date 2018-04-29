@@ -14,10 +14,11 @@ class Price extends Component {
     // if (prevProps.height !== this.props.height) {
     //   someChartLibrary.updateHeight(this.props.height);
     // }
-    let priceChange = Number(this.state.price.replace(/,/g, '')) - Number(prevState.price.replace(/,/g, ''))
-    console.log(prevState);
-    console.log("Price change: "+ priceChange);
-    console.log("Price change level 4: "+ priceChange.toFixed(4));
+    // let oldpriceChange = Number(this.state.price.replace(/,/g, '')) - Number(prevState.price.replace(/,/g, ''))
+    // console.log(prevState);
+    // console.log("Price change: "+ oldpriceChange);
+    // console.log("Price change level 4: "+ oldpriceChange.toFixed(4));
+    // this.setState({priceChange: oldpriceChange})////////////////////////move this into PriceDifference?
   }//componentDidUpdate
   componentWillUnmount(){
     clearInterval(this.interval);
@@ -48,7 +49,9 @@ class Price extends Component {
       <div>
         <h1 className="display-4 text-center">Current Bitcoin Price:</h1>
         <h1 className="display-4 text-center">${this.state.price} {this.state.currency}</h1>
-        <PriceDifference />
+        <PriceDifference price={this.state.price}/>
+        {this.state.priceChange !== "" ? <PriceDifference /> : null}
+        {this.state.priceChange}
         <p className="lead text-center">Updated at: {this.state.timeUpdated}</p>
 
       </div>
