@@ -41,6 +41,8 @@ class Price extends Component {
         {this.state.priceChange !== "" ? <PriceDifference /> : null}
         {this.state.priceChange}
         <p className="lead text-center">Updated at: {this.state.timeUpdated}</p>
+        <hr class="my-4"/>
+        <div class="text-center">*price updated every 30 seconds</div>
       </div>
     )//return
   }//render
