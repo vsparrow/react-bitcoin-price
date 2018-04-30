@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import ShowWhichArrow from './ShowWhichArrow'
 class ShowArrow extends Component {
   constructor(props){
     super(props)
@@ -66,7 +66,7 @@ class ShowArrow extends Component {
       console.log("BLACK");
       newFont = "blank"
     }
-    this.setState({arrow: newFont})
+    // this.setState({arrow: newFont})
   }
   render(){
           // this.arrow
@@ -76,9 +76,12 @@ class ShowArrow extends Component {
           //  {this.props.color === "green" ? 'fas fa-arrow-alt-circle-up' : 'fas fa-arrow-alt-circle-down'}></i>
           //  }
           // </span>
+          // <i className={this.props.color === "green" ? 'fas fa-arrow-alt-circle-up' : 'fas fa-arrow-alt-circle-down'}></i>
+
     return(
       <span>
-      <i className={this.props.color === "green" ? 'fas fa-arrow-alt-circle-up' : 'fas fa-arrow-alt-circle-down'}></i>
+      ShowArrow
+      <ShowWhichArrow color={this.props.color}/>
       </span>
     )
   }
