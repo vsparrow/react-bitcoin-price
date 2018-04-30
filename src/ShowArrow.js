@@ -80,8 +80,8 @@ class ShowArrow extends Component {
 
     return(
       <span>
-      ShowArrow
-      <ShowWhichArrow color={this.props.color}/>
+      {this.props.color === 'black' ? null : <ShowWhichArrow color={this.props.color}/>}
+
       </span>
     )
   }

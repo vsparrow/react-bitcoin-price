@@ -6,9 +6,12 @@ class ShowWhichArrow extends Component {
     // this.state = {arrow: "fas fa-text-height"}
   }//constructor
     // <span>{this.props.color}</span>
+    // <span>ShowWhichArrow</span>
+    // <span>{this.props.color==="green" ? "green" : "red"}</span>
 render(){
   return(
-    <span>ShowWhichArrow</span>
+    <span>{this.props.color==="green" ? <i className="fas fa-arrow-alt-circle-up"></i> : <i className="fas fa-arrow-alt-circle-down"></i>}</span>
+
   )
 }
 
